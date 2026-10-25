@@ -5,8 +5,7 @@
         <span>
           <span :class="startYear < fullYear ? 'c-hidden' : 'hidden'">Copyright</span>
           &copy;
-          <span v-if="startYear < fullYear"
-            class="site-start">
+          <span v-if="startYear < fullYear" class="site-start">
             {{ startYear }}
             -
           </span>
@@ -28,7 +27,11 @@
           <span v-if="siteNet">
             <img src="/备案图标.png" class="net" />
             <span>&nbsp;</span>
-            <a href="https://beian.mps.gov.cn/#/query/webSearch?code=34010402704171" rel="noreferrer" target="_blank">
+            <a
+              href="https://beian.mps.gov.cn/#/query/webSearch?code=34010402704171"
+              rel="noreferrer"
+              target="_blank"
+            >
               {{ siteNet }}
             </a>
             <!-- &amp; -->
@@ -64,15 +67,16 @@ const fullYear = new Date().getFullYear();
 // 加载配置数据
 // const siteStartDate = ref(import.meta.env.VITE_SITE_START);
 const startYear = ref(
-  import.meta.env.VITE_SITE_START?.length >= 4 ? 
-  import.meta.env.VITE_SITE_START.substring(0, 4) : null
+  import.meta.env.VITE_SITE_START?.length >= 4
+    ? import.meta.env.VITE_SITE_START.substring(0, 4)
+    : null,
 );
 const siteIcp = ref(import.meta.env.VITE_SITE_ICP);
 const siteNet = ref(import.meta.env.VITE_SITE_NET);
 const siteAuthor = ref(import.meta.env.VITE_SITE_AUTHOR);
 const siteUrl = computed(() => {
   const url = import.meta.env.VITE_SITE_URL;
-  if (!url) return "https://www.imsyy.top";
+  if (!url) return "https://imlzl.cn";
   // 判断协议前缀
   if (!url.startsWith("http://") && !url.startsWith("https://")) {
     return "//" + url;
